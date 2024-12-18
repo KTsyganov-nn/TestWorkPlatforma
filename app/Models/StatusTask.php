@@ -8,7 +8,8 @@ class StatusTask extends Model
 {
     protected $guarded = false;
 
-    function Tasks(){
+    function Tasks()
+    {
         return $this->hasMany(Task::class);
     }
 }

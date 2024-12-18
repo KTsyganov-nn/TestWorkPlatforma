@@ -1,5 +1,5 @@
 <script setup>
-import { Head, Link, useForm } from '@inertiajs/vue3';
+import {Head, Link, useForm} from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
@@ -17,9 +17,7 @@ const form = useForm({
 });
 
 const submit = () => {
-    form.post(route('task.store'), {
-
-    });
+    form.post(route('task.store'), {});
 };
 
 
@@ -33,7 +31,8 @@ const submit = () => {
             </h2>
             <Link
                 :href="route('task.index')"
-            >Вернуться назад</Link>
+            >Вернуться назад
+            </Link>
         </template>
 
         <div class="py-12">
@@ -42,7 +41,7 @@ const submit = () => {
                     <div class="p-10">
                         <form @submit.prevent="submit">
                             <div>
-                                <InputLabel for="title" value="Название" />
+                                <InputLabel for="title" value="Название"/>
                                 <TextInput
                                     id="title"
                                     v-model="form.title"
@@ -52,19 +51,19 @@ const submit = () => {
                                     autofocus
                                     autocomplete="name"
                                 />
-                                <InputError class="mt-2" :message="form.errors.title" />
+                                <InputError class="mt-2" :message="form.errors.title"/>
                             </div>
 
                             <div class="mt-4">
-                                <InputLabel for="description" value="Описание" />
+                                <InputLabel for="description" value="Описание"/>
                                 <TextArea id="description" v-model="form.description" class="mt-1 block w-full">
 
                                 </TextArea>
-                                <InputError class="mt-2" :message="form.errors.description" />
+                                <InputError class="mt-2" :message="form.errors.description"/>
                             </div>
 
                             <div class="mt-4">
-                                <InputLabel for="date_start" value="Дата начала" />
+                                <InputLabel for="date_start" value="Дата начала"/>
                                 <TextInput
                                     id="date_start"
                                     v-model="form.date_start"
@@ -73,11 +72,11 @@ const submit = () => {
                                     required
                                     autocomplete="date_start"
                                 />
-                                <InputError class="mt-2" :message="form.errors.date_start" />
+                                <InputError class="mt-2" :message="form.errors.date_start"/>
                             </div>
 
                             <div class="mt-4">
-                                <InputLabel for="date_end" value="Дата конца" />
+                                <InputLabel for="date_end" value="Дата конца"/>
                                 <TextInput
                                     id="date_end"
                                     v-model="form.date_end"
@@ -86,21 +85,21 @@ const submit = () => {
                                     required
                                     autocomplete="date_end"
                                 />
-                                <InputError class="mt-2" :message="form.errors.date_end" />
+                                <InputError class="mt-2" :message="form.errors.date_end"/>
                             </div>
-
 
 
                             <div class="flex items-center justify-end mt-4">
 
 
-                                <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                                <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }"
+                                               :disabled="form.processing">
                                     Сохранить
                                 </PrimaryButton>
                             </div>
                         </form>
                     </div>
-               </div>
+                </div>
             </div>
         </div>
     </AppLayout>

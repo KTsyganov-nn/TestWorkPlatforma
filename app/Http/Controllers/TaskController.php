@@ -17,8 +17,8 @@ class TaskController extends Controller
     public function index(request $request)
     {
         $tasks = Task::query()->where('date_start', '<=', Carbon::now())
-        ->where('date_end', '>=',Carbon::now())
-        ->whereIn('status_id', [1,2, 4])
+            ->where('date_end', '>=', Carbon::now())
+            ->whereIn('status_id', [1, 2, 4])
             ->where(function ($query) {
                 $query->whereNull('user_took_id')
                     ->orWhere('user_took_id', Auth::id());
@@ -29,7 +29,7 @@ class TaskController extends Controller
         $data = $tasks->toArray();
 
         $data['links'][0]['label'] = '« Назад';
-        $data['links'][count($data['links'])-1]['label'] = 'Вперед »';
+        $data['links'][count($data['links']) - 1]['label'] = 'Вперед »';
         return inertia('Task/Index', ['tasks' => TaskResource::collection($tasks),
             'links' => $data['links']
         ]);
@@ -74,37 +74,42 @@ class TaskController extends Controller
     {
 
     }
-    public function getTask(Task $task){
 
-        if ($task->status_id==1 || ($task->status_id == 4 && $task->user_took_id == Auth::id())){
+    public function getTask(Task $task)
+    {
+
+        if ($task->status_id == 1 || ($task->status_id == 4 && $task->user_took_id == Auth::id())) {
             $task->update(['status_id' => 2, 'user_took_id' => Auth::id()]);
-            return redirect()->route('task.index', ['message_success'=>'Задача успешно взята']);
-        }
-        else {
-            return redirect()->route('task.index', ['message_error'=>'Не получилось взять задачу']);
+            return redirect()->route('task.index', ['message_success' => 'Задача успешно взята']);
+        } else {
+            return redirect()->route('task.index', ['message_error' => 'Не получилось взять задачу']);
         }
     }
-    public function cancelTask(Task $task){
 
-        if ($task->status_id==2  && $task->user_took_id == Auth::id()){
+    public function cancelTask(Task $task)
+    {
+
+        if ($task->status_id == 2 && $task->user_took_id == Auth::id()) {
             $task->update(['status_id' => 4]);
-            return redirect()->route('task.index', ['message_success'=>'Задача успешно взята']);
-        }
-        else {
+            return redirect()->route('task.index', ['message_success' => 'Задача успешно взята']);
+        } else {
             return redirect()->route('task.index');
         }
     }
-    public function SuccessTask(Task $task){
 
-        if ($task->status_id==2  && $task->user_took_id == Auth::id()){
+    public function SuccessTask(Task $task)
+    {
+
+        if ($task->status_id == 2 && $task->user_took_id == Auth::id()) {
             $task->update(['status_id' => 3]);
             return redirect()->route('task.index');
-        }
-        else {
-            return redirect()->route('task.index' );
+        } else {
+            return redirect()->route('task.index');
         }
     }
-    public function showTasks(User $user){
-        return inertia('Task/Index', ['tasks'=>TaskResource::collection($user->tasks)]);
+
+    public function showTasks(User $user)
+    {
+        return inertia('Task/Index', ['tasks' => TaskResource::collection($user->tasks)]);
     }
 }
