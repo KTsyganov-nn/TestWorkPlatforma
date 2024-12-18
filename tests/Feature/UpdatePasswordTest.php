@@ -41,6 +41,7 @@ class UpdatePasswordTest extends TestCase
 
     public function test_new_passwords_must_match(): void
     {
+
         $this->actingAs($user = User::factory()->create());
 
         $response = $this->put('/user/password', [
