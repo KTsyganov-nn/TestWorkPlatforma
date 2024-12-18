@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
     {
         User::create(
             [
-                'name' => 'Kirill',
-                'email' => 'litto@inbox.ru',
+                'name' => fake()->name,
+                'email' => '123@mail.ru',
                 'email_verified_at' => now(),
                 'password' => Hash::make('password'),
                 'two_factor_secret' => null,
