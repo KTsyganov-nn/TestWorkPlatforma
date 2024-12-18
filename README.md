@@ -39,16 +39,21 @@
 
 </ol>
 <h2>Второй способ запуска через докер</h2>
+<p>Первая инициализация</p>
     <ol>
     <li>в командной строке в папке проекта пишем
     docker-compose -f docker-compose.dev.yml up -d</li>    
-    <li></li>    
-    <li></li>    
-    <li></li>    
-    <li></li>    
-    <li></li>    
-    <li></li>    
-    <li></li>    
-    <li></li>    
-    <li></li>    
+    <li>Ждем пока соберется проект</li>    
+    <li>docker exec -it testWorkPlatforma_app bash /var/www/html/docker/firsInit.sh</li>    
+    <li>Для запуска очереди docker exec -it testWorkPlatforma_app bash /var/www/html/docker/startQueue.sh</li>    
+    <li>для выключения приложения введите команду docker-compose -f docker-compose.dev.yml down</li>
+</ol>
+<p>У меня почему-то с первого раза не работает сайт, приходится первую инициализацию проводить 2 раза</p>
+
+<p>Сдедующие запуски </p>
+<ol>
+    <li>в командной строке в папке проекта пишем
+    docker-compose -f docker-compose.dev.yml up -d</li> 
+    <li>Для запуска очереди docker exec -it testWorkPlatforma_app bash /var/www/html/docker/startQueue.sh</li>    
+    <li>для выключения приложения введите команду docker-compose -f docker-compose.dev.yml down</li>
 </ol>
