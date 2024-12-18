@@ -15,8 +15,10 @@ class StatusSeeder extends Seeder
     {
         StatusTask::create(['title'=>'Активна']);
         StatusTask::create(['title'=>'В работе']);
-        StatusTask::create(['title'=>'Завершена']);
+        StatusTask::create(['title'=>'На проверке']);
         StatusTask::create(['title'=>'Возвращена']);
+        StatusTask::create(['title'=>'Выполнена']);
+        StatusTask::create(['title'=>'Срок выполнения прошел']);
 
     }
 }
