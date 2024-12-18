@@ -18,6 +18,7 @@ services:
             - testWork
         depends_on:
             - mysql
+        container_name: testWorkPlatforma_app
     mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
@@ -31,6 +32,7 @@ services:
             MYSQL_ALLOW_EMPTY_PASSWORD: 1
         networks:
             - testWork
+        container_name: testWorkPlatforma_bd
 networks:
   testWork:
     driver: bridge
