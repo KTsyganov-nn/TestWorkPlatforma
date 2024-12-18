@@ -1,12 +1,12 @@
 #!/bin/bash
-if [ -f "/var/www/public/node_modules" ]; then
-    rm -rf /var/www/public/node_modules
+if [ -f "/var/www/html/node_modules" ]; then
+    rm -rf /var/www/html/node_modules
 fi
-cd /var/www/public
-cp /var/www/public/.envtestBuild /var/www/public/.env
+cd /var/www/html
+cp /var/www/html/.envtestBuild /var/www/html/.env
 composer update
 npm install
 npm run build
-php atrisan migrate:refresh --seed
+php artisan migrate:refresh --seed
 chmod 777 -R ./storage
 echo "Все скрипты выполнены!"

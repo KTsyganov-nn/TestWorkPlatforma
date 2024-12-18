@@ -1,3 +1,3 @@
 #!/bin/bash
-cd /var/www/public
+cd /var/www/html
 php artisan queue:work
